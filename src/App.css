@@ -1,8 +1,7 @@
 .app{
     margin: 2rem auto;
     padding: 1.5rem 2rem;
-    height: 80vh;
-    background-color: lightgray;
+    height: 100%;
 }
 .inputs{
     display: flex;

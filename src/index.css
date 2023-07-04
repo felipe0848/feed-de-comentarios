@@ -23,6 +23,7 @@ a:hover {
 }
 
 body {
+  background-color: lightgray;
   margin: 0;
   display: flex;
   place-items: flex-start;
@@ -37,3 +38,9 @@ h1 {
 }
 
 
+@media (max-width: 603px){
+h1{
+  font-size: 2.5em;
+  text-align: center;
+}
+}
