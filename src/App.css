@@ -1,0 +1,44 @@
+.app{
+    margin: 2rem auto;
+    padding: 1.5rem 2rem;
+    height: 80vh;
+    background-color: lightgray;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs > input {
+    
+    height: 2.5rem;
+    margin-bottom: 1rem;
+    margin-top: .3rem;
+}
+
+#comment{
+    height: 8rem;
+    margin-bottom: 1rem;
+    margin-top: .3rem;
+}
+
+button {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #213547;
+    padding: 0.8em 1.6em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    margin-bottom: .5rem;
+  }
+  button:hover {
+    border-color: #646cff;
+  }
+  button:focus,
+  button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
