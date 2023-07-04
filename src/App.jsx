@@ -2,7 +2,12 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [ comments, setComments ] = useState(()=>[])
+  const [ comments, setComments ] = useState(()=>{
+    const storedComment = localStorage.getItem('comments-lib')
+    if (!storedComment) return []
+    return JSON.parse(storedComment)
+       
+  })
   const [ userEmail, setUserEmail ] = useState('')
   const [ userComment, setUserComment ] = useState('')
 
@@ -13,16 +18,14 @@ function App() {
 
     setComments((comments)=>{
       const commentsArray = [...comments, newComment]
+      localStorage.setItem('comments-lib', JSON.stringify(commentsArray))
       return commentsArray
     })
-
-    console.log(comments)
   }
 
   const handleSubmit = (ev)=>{
     ev.preventDefault()
     addComment({userEmail, userComment})
-    // console.log({userEmail, userComment})
     setUserEmail('')  
     setUserComment('')
   }
@@ -49,14 +52,16 @@ function App() {
       <hr />
 
       <div>
+      
         {comments.map((comment)=>(
            <div key={comment.id}>
-            <h3>{comment.userEmail}</h3>
-            <p>{comment.creatAt}</p>
-            <p>{comment.userComment}</p>
+              <h3>{comment.userEmail}</h3>
+              <p>{comment.creatAt}</p>
+              <p>{comment.userComment}</p>
             
-          </div>
+            </div>
         ))}
+
       </div>
     </div>
   )
