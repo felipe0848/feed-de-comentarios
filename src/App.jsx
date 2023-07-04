@@ -2,15 +2,28 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
+  const [ comments, setComments ] = useState(()=>[])
   const [ userEmail, setUserEmail ] = useState('')
   const [ userComment, setUserComment ] = useState('')
 
-  
+  const addComment = ({userEmail, userComment})=>{
+    const id = Math.floor(Math.random()*1000000)
+    const creatAt = `Em ${new Date().toLocaleDateString('pt-BR')}, ${new Date().toLocaleTimeString('pt-BR')}`
+    const newComment = {id, userEmail, userComment, creatAt}
+
+    setComments((comments)=>{
+      const commentsArray = [...comments, newComment]
+      return commentsArray
+    })
+
+    console.log(comments)
+  }
 
   const handleSubmit = (ev)=>{
     ev.preventDefault()
-    console.log({userEmail,userComment})
-    setUserEmail('')
+    addComment({userEmail, userComment})
+    // console.log({userEmail, userComment})
+    setUserEmail('')  
     setUserComment('')
   }
 
@@ -36,7 +49,14 @@ function App() {
       <hr />
 
       <div>
-        <p>Seja o primeiro a comentar!</p>
+        {comments.map((comment)=>(
+           <div key={comment.id}>
+            <h3>{comment.userEmail}</h3>
+            <p>{comment.creatAt}</p>
+            <p>{comment.userComment}</p>
+            
+          </div>
+        ))}
       </div>
     </div>
   )
